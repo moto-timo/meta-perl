@@ -10,6 +10,23 @@ Whereas Module::Build has over 6,700 lines of code; this module has less than \
 HOMEPAGE = "http://search.cpan.org/~leont/Module-Build-Tiny/"
 SECTION = "devel"
 LICENSE = "Artistic-1.0 | GPL-1.0+"
+LIC_FILES_CHKSUM = "file://LICENSE;md5=aaca61412962cf972aec0cdad99d0a84"
+
+SRC_URI = "http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/Module-Build-Tiny-${PV}.tar.gz"
+SRC_URI[md5sum] = "1c54bf4c602eec87f98950314699402e"
+SRC_URI[sha256sum] = "dfd418ad0e8290cf645ab11be209a1bf6865e5a562c5a1592da99d5fd24718a8"
+
+S = "${WORKDIR}/Module-Build-Tiny-${PV}"
+
+inherit cpan_build
+
+do_install () {
+        # Install Module/Build/Tiny.pm in @INC 
+        install ${S}/lib/Module/Build/Tiny.pm ${PERL_ARCHLIB}/Module/Build/
+        
+        cpan_build_do_install
+}
+
 RDEPENDS_${PN} = " perl-module-xsloader \
                    perl-module-file-spec \
                    perl-module-io-handle \
@@ -38,20 +55,5 @@ RDEPENDS_${PN} = " perl-module-xsloader \
                    perl-module-extutils-config-native \
                    perl-module-json-pp \
 "
-
-LIC_FILES_CHKSUM = "file://LICENSE;md5=aaca61412962cf972aec0cdad99d0a84"
-
-SRC_URI = "http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/Module-Build-Tiny-${PV}.tar.gz"
-SRC_URI[md5sum] = "1c54bf4c602eec87f98950314699402e"
-SRC_URI[sha256sum] = "dfd418ad0e8290cf645ab11be209a1bf6865e5a562c5a1592da99d5fd24718a8"
-
-S = "${WORKDIR}/Module-Build-Tiny-${PV}"
-
-inherit cpan_build
-
-do_install () {
-        # Install Module/Build/Tiny.pm in @INC 
-        install ${S}/lib/Module/Build/Tiny.pm ${PERL_ARCHLIB}/Module/Build/
-}
 
 BBCLASSEXTEND = "native"
