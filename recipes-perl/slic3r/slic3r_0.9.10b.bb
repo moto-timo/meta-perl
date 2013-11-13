@@ -11,10 +11,10 @@ SECTION = "devel"
 LICENSE = "Artistic-1.0 | GPL-1.0+ | GPL-3.0"
 LIC_FILES_CHKSUM = "file://lib/Slic3r.pm;beginline=3;endline=4;md5=aaca61412962cf972aec0cdad99d0a84"
 
+# perl-native provides Test::More
 DEPENDS = "  perl-module-encode-locale-native \
              perl-module-runtime-native \
              perl-module-boost-geometry-utils-native \
-             perl-module-test-more \
              perl-module-io-scalar \
 "
 
