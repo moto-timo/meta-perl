@@ -22,7 +22,7 @@ inherit cpan_build
 
 do_install () {
         # Install Module/Build/Tiny.pm in @INC 
-        install ${S}/lib/Module/Build/Tiny.pm ${PERL_ARCHLIB}/Module/Build/
+        install -m 444 ${S}/lib/Module/Build/Tiny.pm ${PERL_ARCHLIB}/Module/Build/
         
         cpan_build_do_install
 }
